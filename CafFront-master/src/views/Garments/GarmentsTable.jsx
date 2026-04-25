@@ -72,7 +72,7 @@ const estadoPillClasses = (estadoText = "") => {
   if (k.includes("salida")) return "bg-gray-200 text-gray-800";
   return "bg-gray-100 text-gray-800";
 };
-
+A
 export default function GarmentsTable() {
   const { state } = useLocation();
 
@@ -238,7 +238,7 @@ export default function GarmentsTable() {
     // Improved sorting logic with default sort by latest ID
     filtered.sort((a, b) => {
       // Default sort: latest ID (descending) when no sort field is specified
-      const effectiveSortField = sortField || "id";
+      const effectiveSortField = sortField || "fechaIngreso";
       const effectiveSortDirection = sortField ? sortDirection : "desc";
 
       // Get sort values based on field
