@@ -72,7 +72,6 @@ const estadoPillClasses = (estadoText = "") => {
   if (k.includes("salida")) return "bg-gray-200 text-gray-800";
   return "bg-gray-100 text-gray-800";
 };
-A
 export default function GarmentsTable() {
   const { state } = useLocation();
 
