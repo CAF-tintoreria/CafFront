@@ -835,7 +835,7 @@ export default function GarmentsTable() {
                     <TableHead className="sticky left-0 bg-white z-10">
                       <SortButton field="cliente.nombre">Cliente</SortButton>
                     </TableHead>
-                    <TableHead>
+                    <TableHead className="sticky left-[120px] bg-white z-10">
                       <SortButton field="tipoPrenda">Tipo</SortButton>
                     </TableHead>
                     <TableHead>
@@ -882,7 +882,7 @@ export default function GarmentsTable() {
                                     </div>
                                 </div>
                             </TableCell>
-                        <TableCell className="font-medium">
+                        <TableCell className="sticky left-[120px] bg-white z-10 font-medium">
                           {p.tipoPrenda}
                         </TableCell>
                         <TableCell>{p.nroCorte ?? "-"}</TableCell>
