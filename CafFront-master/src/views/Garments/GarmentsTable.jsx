@@ -870,7 +870,8 @@ export default function GarmentsTable() {
                   {paginatedItems.map((p) => {
                     const estText = estadoTexto(p);
                     return (
-                      <TableRow key={p.id}>
+                        <TableRow key={p.id}>
+                            <TableCell>#{p.id}</TableCell>
                             <TableCell className="sticky left-0 bg-white z-10">
                                 <div>
                                     <div className="font-medium">
