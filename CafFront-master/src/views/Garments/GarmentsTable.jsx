@@ -68,9 +68,8 @@ const estadoPillClasses = (estadoText = "") => {
   if (k.includes("terminado")) return "bg-green-100 text-green-800";
   if (k.includes("en proceso")) return "bg-blue-100 text-blue-800";
   if (k.includes("pendiente")) return "bg-yellow-100 text-yellow-800";
-  if (k.includes("facturado")) return "bg-purple-100 text-purple-800";
   if (k.includes("salida")) return "bg-gray-200 text-gray-800"
-  if (k.includes("despacho")) return "bg-cyan-100 text-cyan-800";;
+  if (k.includes("despacho")) return "bg-purple-100 text-purple-800";
   return "bg-gray-100 text-gray-800";
 };
 export default function GarmentsTable() {
