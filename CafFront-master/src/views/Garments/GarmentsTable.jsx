@@ -111,7 +111,8 @@ export default function GarmentsTable() {
   const [filterProceso, setFilterProceso] = useState("all");
   const [filterTipoPrenda, setFilterTipoPrenda] = useState("all");
   const [sortField, setSortField] = useState("");
-  const [sortDirection, setSortDirection] = useState("");
+  const [sortDirection, setSortDirection] = useState("")
+  const [sortDirection, setSortDirection] = useState("");        ;
 
   const [dateFrom, setDateFrom] = useState(null); // Date | null
   const [dateTo, setDateTo] = useState(null); // Date | null
@@ -295,6 +296,11 @@ export default function GarmentsTable() {
     dateFrom,
     dateTo,
   ]);
+    const totalPages = Math.ceil(filteredAndSorted.length / itemsPerPage);
+    const paginatedItems = filteredAndSorted.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
 
   const exportXLSX = () => {
     // Encabezados
@@ -315,7 +321,7 @@ export default function GarmentsTable() {
     ];
 
     // Filas desde lo que se ve en pantalla
-    const rows = filteredAndSorted.map((p) => {
+    const rows = paginatedItems.map((p) => {
       const fecha = p.fechaIngreso
         ? format(p.fechaIngreso, "dd/MM/yyyy", { locale: es })
         : "";
@@ -674,7 +680,7 @@ export default function GarmentsTable() {
           {/* Vista Mobile (cards) como en el “antes” */}
           {isMobile && !isLoading && filteredAndSorted.length > 0 ? (
             <div className="space-y-4">
-              {filteredAndSorted.map((p) => {
+              {paginatedItems.map((p) => {
                 const estText = estadoTexto(p);
                 return (
                   <Card key={p.id} className="p-4 space-y-3">
@@ -860,7 +866,7 @@ export default function GarmentsTable() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {filteredAndSorted.map((p) => {
+                  {paginatedItems.map((p) => {
                     const estText = estadoTexto(p);
                     return (
                       <TableRow key={p.id}>
@@ -976,6 +982,27 @@ export default function GarmentsTable() {
                   })}
                 </TableBody>
               </Table>
+            </div>
+          )}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-4">
+                          <Button
+                              variant="outline"
+                              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                              disabled={currentPage === 1}
+                          >
+                              Anterior
+                          </Button>
+                          <span className="text-sm text-gray-600">
+                              Página {currentPage} de {totalPages}
+                          </span>
+                          <Button
+                              variant="outline"
+                              onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                              disabled={currentPage === totalPages}
+                          >
+                              Siguiente
+                          </Button>
             </div>
           )}
         </CardContent>
