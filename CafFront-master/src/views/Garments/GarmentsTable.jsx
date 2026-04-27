@@ -553,7 +553,7 @@ export default function GarmentsTable() {
               </Select>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 col-span-2">
               <Label>Desde</Label>
               <Popover open={openFrom} onOpenChange={setOpenFrom}>
                 <PopoverTrigger asChild>
@@ -595,7 +595,7 @@ export default function GarmentsTable() {
               </Popover>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 col-span-2">
               <Label>Hasta</Label>
               <Popover open={openTo} onOpenChange={setOpenTo}>
                 <PopoverTrigger asChild>
