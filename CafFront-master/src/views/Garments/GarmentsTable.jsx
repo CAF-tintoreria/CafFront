@@ -111,8 +111,7 @@ export default function GarmentsTable() {
   const [filterProceso, setFilterProceso] = useState("all");
   const [filterTipoPrenda, setFilterTipoPrenda] = useState("all");
   const [sortField, setSortField] = useState("");
-  const [sortDirection, setSortDirection] = useState("")
-  const [sortDirection, setSortDirection] = useState("");        ;
+  const [sortDirection, setSortDirection] = useState("");
 
   const [dateFrom, setDateFrom] = useState(null); // Date | null
   const [dateTo, setDateTo] = useState(null); // Date | null
