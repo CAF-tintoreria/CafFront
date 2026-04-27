@@ -832,7 +832,7 @@ export default function GarmentsTable() {
                     <TableHead>
                       <SortButton field="id">ID</SortButton>
                     </TableHead>
-                    <TableHead>
+                    <TableHead className="sticky left-0 bg-white z-10">
                       <SortButton field="cliente.nombre">Cliente</SortButton>
                     </TableHead>
                     <TableHead>
@@ -871,17 +871,16 @@ export default function GarmentsTable() {
                     const estText = estadoTexto(p);
                     return (
                       <TableRow key={p.id}>
-                        <TableCell>#{p.id}</TableCell>
-                        <TableCell>
-                          <div>
-                            <div className="font-medium">
-                              {p.cliente?.nombre}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {p.cliente?.contacto}
-                            </div>
-                          </div>
-                        </TableCell>
+                            <TableCell className="sticky left-0 bg-white z-10">
+                                <div>
+                                    <div className="font-medium">
+                                        {p.cliente?.nombre}
+                                    </div>
+                                    <div className="text-sm text-gray-500">
+                                        {p.cliente?.contacto}
+                                    </div>
+                                </div>
+                            </TableCell>
                         <TableCell className="font-medium">
                           {p.tipoPrenda}
                         </TableCell>
