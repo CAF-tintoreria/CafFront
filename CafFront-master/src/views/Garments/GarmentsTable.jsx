@@ -70,7 +70,7 @@ const estadoPillClasses = (estadoText = "") => {
   if (k.includes("pendiente")) return "bg-yellow-100 text-yellow-800";
   if (k.includes("facturado")) return "bg-purple-100 text-purple-800";
   if (k.includes("salida")) return "bg-gray-200 text-gray-800"
-  if (k.includes("despacho")) return "bg-orange-100 text-orange-800";
+  if (k.includes("despacho")) return "bg-cyan-100 text-cyan-800";;
   return "bg-gray-100 text-gray-800";
 };
 export default function GarmentsTable() {
