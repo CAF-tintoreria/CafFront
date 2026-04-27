@@ -553,7 +553,7 @@ export default function GarmentsTable() {
               </Select>
             </div>
 
-            <div className="space-y-2 col-span-2">
+            <div className="space-y-2">
               <Label>Desde</Label>
               <Popover open={openFrom} onOpenChange={setOpenFrom}>
                 <PopoverTrigger asChild>
@@ -566,7 +566,7 @@ export default function GarmentsTable() {
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {dateFrom
                       ? format(dateFrom, "dd/MM/yyyy", { locale: es })
-                      : "Selecciona una fecha"}
+                      : "Seleccionar"}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
@@ -595,7 +595,7 @@ export default function GarmentsTable() {
               </Popover>
             </div>
 
-            <div className="space-y-2 col-span-2">
+            <div className="space-y-2">
               <Label>Hasta</Label>
               <Popover open={openTo} onOpenChange={setOpenTo}>
                 <PopoverTrigger asChild>
@@ -608,7 +608,7 @@ export default function GarmentsTable() {
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {dateTo
                       ? format(dateTo, "dd/MM/yyyy", { locale: es })
-                      : "Selecciona una fecha"}
+                      : "Seleccionar"}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
