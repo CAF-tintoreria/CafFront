@@ -432,7 +432,7 @@ export default function SamplesTable() {
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {dateFrom
                       ? format(dateFrom, "dd/MM/yyyy", { locale: es })
-                      : "Selecciona una fecha"}
+                      : "Seleccionar"}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
@@ -465,7 +465,7 @@ export default function SamplesTable() {
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {dateTo
                       ? format(dateTo, "dd/MM/yyyy", { locale: es })
-                      : "Selecciona una fecha"}
+                      : "Seleccionar"}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
