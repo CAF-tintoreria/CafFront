@@ -228,7 +228,7 @@ export default function Dashboard({ userName = "Usuario", onLogout }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-blue-100 text-sm">Prendas activas</p>
-                  <p className="text-2xl font-bold">{garments.length || "-"}</p>
+                  <p className="text-2xl font-bold">{garments.filter(g => g.estadoPrendaID !== 2).length || "-"}</p>
                 </div>
                 <Building2 className="h-8 w-8 text-blue-200" />
               </div>
