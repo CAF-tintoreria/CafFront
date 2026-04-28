@@ -70,6 +70,7 @@ const schemaFactory = () =>
       .positive("Debe ser mayor a 0"),
     sampleStatusID: requiredSelect("el estado"),
     clientID: requiredSelect("el cliente"),
+    observaciones: z.string().max(500, "Máx 500 caracteres").optional(),
   });
 
 export default function EditSample() {
@@ -159,6 +160,7 @@ export default function EditSample() {
           sampleStatusID:
             data.status?.sampleStatusID ?? data.sampleStatusID ?? "",
           clientID: data.client?.clientID ?? data.clienteID ?? "",
+          observaciones: data.observaciones ?? "",
         });
       } catch (err) {
         showToast({
@@ -189,6 +191,7 @@ export default function EditSample() {
         clientID: values.clientID,
         sampleStatusID: values.sampleStatusID,
         modifiedAt: new Date().toISOString(),
+        observaciones: values.observaciones || null,
       };
 
       const msg = await updateSample(id, dto);
@@ -387,6 +390,27 @@ export default function EditSample() {
                   />
                 </div>
               </div>
+                          {/* Observaciones */}
+                          <div className="space-y-4">
+                              <h3 className="text-lg font-semibold">Observaciones</h3>
+                              <FormField
+                                  control={form.control}
+                                  name="observaciones"
+                                  render={({ field }) => (
+                                      <FormItem>
+                                          <FormLabel>Observaciones</FormLabel>
+                                          <FormControl>
+                                              <textarea
+                                                  className="w-full border rounded-md p-2 text-sm min-h-[100px]"
+                                                  placeholder="Ingresá observaciones (opcional)"
+                                                  {...field}
+                                              />
+                                          </FormControl>
+                                          <FormMessage />
+                                      </FormItem>
+                                  )}
+                              />
+                          </div>
             </CardContent>
 
             <CardFooter className="gap-3">
