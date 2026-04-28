@@ -402,7 +402,7 @@ export default function EditSample() {
                                           <FormControl>
                                               <textarea
                                                   className="w-full border rounded-md p-2 text-sm min-h-[100px]"
-                                                  placeholder="Ingresá observaciones (opcional)"
+                                                  placeholder="Ingresar observaciones (opcional)"
                                                   {...field}
                                               />
                                           </FormControl>
