@@ -246,7 +246,7 @@ export default function Dashboard({ userName = "Usuario", onLogout }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-green-100 text-sm">Muestras</p>
-                  <p className="text-2xl font-bold">{samples.length || "-"}</p>
+                  <p className="text-2xl font-bold">{samples.filter(s => s.status?.sampleStatusID !== 5).length || "-"}</p>
                 </div>
                 <Sparkles className="h-8 w-8 text-green-200" />
               </div>
