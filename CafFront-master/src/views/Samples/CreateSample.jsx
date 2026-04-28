@@ -72,6 +72,7 @@ const schemaFactory = () =>
       .positive("Debe ser mayor a 0"),
     sampleStatusID: requiredSelect("el estado"),
     clientID: requiredSelect("el cliente"),
+    observaciones: z.string().max(500, "Máx 500 caracteres").optional(),
   });
 
 export default function CreateSample() {
@@ -123,6 +124,7 @@ export default function CreateSample() {
       kilogramWeight: "",
       sampleStatusID: "",
       clientID: "",
+      observaciones: "",
     },
   });
 
@@ -143,6 +145,7 @@ export default function CreateSample() {
         clientID: values.clientID,
         sampleStatusID: values.sampleStatusID,
         modifiedAt: new Date().toISOString(),
+        observaciones: values.observaciones || null,
       };
 
       const msg = await addSample(dto);
@@ -321,6 +324,27 @@ export default function CreateSample() {
                   />
                 </div>
               </div>
+                          {/* Observaciones */}
+                          <div className="space-y-4">
+                              <h3 className="text-lg font-semibold">Observaciones</h3>
+                              <FormField
+                                  control={form.control}
+                                  name="observaciones"
+                                  render={({ field }) => (
+                                      <FormItem>
+                                          <FormLabel>Observaciones</FormLabel>
+                                          <FormControl>
+                                              <textarea
+                                                  className="w-full border rounded-md p-2 text-sm min-h-[100px]"
+                                                  placeholder="Ingresá observaciones (opcional)"
+                                                  {...field}
+                                              />
+                                          </FormControl>
+                                          <FormMessage />
+                                      </FormItem>
+                                  )}
+                              />
+                          </div>
             </CardContent>
 
             <CardFooter>
