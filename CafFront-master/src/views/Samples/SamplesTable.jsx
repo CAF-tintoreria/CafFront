@@ -59,9 +59,8 @@ import { Spinner } from "@/components/ui/spinner";
 
 const estadoPillClasses = (estadoText = "") => {
   const k = String(estadoText).toLowerCase();
-  if (k.includes("realizado")) return "bg-green-100 text-green-800";
-  if (k.includes("entregado")) return "bg-blue-100 text-blue-800";
-  if (k.includes("pendiente")) return "bg-yellow-100 text-yellow-800";
+  if (k.includes("entregada")) return "bg-green-100 text-green-800";
+  if (k.includes("ingresada")) return "bg-blue-100 text-blue-800";
   return "bg-gray-100 text-gray-800";
 };
 
