@@ -97,6 +97,8 @@ export default function SamplesTable() {
   const [filterTipo, setFilterTipo] = useState("all");
   const [sortField, setSortField] = useState("");
   const [sortDirection, setSortDirection] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
   const [openFrom, setOpenFrom] = useState(false);
@@ -133,6 +135,7 @@ export default function SamplesTable() {
     });
   }, [samples]);
 
+    
   // opciones estado (desde /SampleStatus)
   const estadosOptions = useMemo(
     () =>
@@ -218,6 +221,13 @@ export default function SamplesTable() {
     dateTo,
   ]);
 
+    const totalPages = Math.ceil(filteredAndSorted.length / itemsPerPage);
+    const paginatedItems = filteredAndSorted.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+
   const exportXLSX = () => {
     const headers = [
       "Tipo",
@@ -228,7 +238,7 @@ export default function SamplesTable() {
       "Contacto",
       "Observaciones",
     ];
-    const rows = filteredAndSorted.map((m) => [
+      const rows = paginatedItems.map((m) => [
       m.tipo ?? "",
       m.pesoKilos ?? "",
       m.estado ?? "",
@@ -505,7 +515,7 @@ export default function SamplesTable() {
           {/* Mobile (cards) */}
           {isMobile && !isLoading && filteredAndSorted.length > 0 && (
             <div className="space-y-4">
-              {filteredAndSorted.map((m) => (
+              {paginatedItems.map((m) => (
                 <Card key={m.id} className="p-4 space-y-3">
                   <div className="flex items-start justify-between">
                     <div>
@@ -607,7 +617,7 @@ export default function SamplesTable() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {filteredAndSorted.map((m) => (
+                  {paginatedItems.map((m) => (
                     <TableRow key={m.id}>
                       <TableCell className="font-medium">{m.tipo}</TableCell>
                       <TableCell>
@@ -682,6 +692,27 @@ export default function SamplesTable() {
               </Table>
             </div>
           )}
+                  {totalPages > 1 && (
+                      <div className="flex items-center justify-center gap-2 mt-4">
+                          <Button
+                              variant="outline"
+                              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                              disabled={currentPage === 1}
+                          >
+                              Anterior
+                          </Button>
+                          <span className="text-sm text-gray-600">
+                              Página {currentPage} de {totalPages}
+                          </span>
+                          <Button
+                              variant="outline"
+                              onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                              disabled={currentPage === totalPages}
+                          >
+                              Siguiente
+                          </Button>
+                      </div>
+                  )}
         </CardContent>
       </Card>
 
