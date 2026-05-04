@@ -196,7 +196,7 @@ export default function SamplesTable() {
       } else if (sortField) {
         av = a[sortField];
         bv = b[sortField];
-        }
+       
       } else {
         // Default: más reciente primero por fecha
         const fa = a.fechaCreacion ?? new Date(0);
