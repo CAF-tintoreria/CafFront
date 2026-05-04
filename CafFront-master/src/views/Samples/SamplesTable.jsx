@@ -603,7 +603,10 @@ export default function SamplesTable() {
             <div className="rounded-md border overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow>
+                    <TableRow>
+                    <TableHead>
+                      <SortButton field="cliente.nombre">Cliente</SortButton>
+                    </TableHead>
                     <TableHead>
                       <SortButton field="tipo">Tipo</SortButton>
                     </TableHead>
@@ -616,15 +619,20 @@ export default function SamplesTable() {
                     <TableHead>
                       <SortButton field="fechaCreacion">Fecha</SortButton>
                     </TableHead>
-                    <TableHead>
-                      <SortButton field="cliente.nombre">Cliente</SortButton>
-                    </TableHead>
                     <TableHead>Acciones</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {paginatedItems.map((m) => (
                     <TableRow key={m.id}>
+                      <TableCell>
+                        <div>
+                         <div className="font-medium">{m.cliente?.nombre}</div>
+                         <div className="text-sm text-gray-500">
+                          {m.cliente?.contacto}
+                         </div>
+                        </div>
+                      </TableCell>
                       <TableCell className="font-medium">{m.tipo}</TableCell>
                       <TableCell>
                         {m.pesoKilos != null ? `${m.pesoKilos} kg` : "-"}
@@ -644,14 +652,6 @@ export default function SamplesTable() {
                               locale: es,
                             })
                           : "-"}
-                      </TableCell>
-                      <TableCell>
-                        <div>
-                          <div className="font-medium">{m.cliente?.nombre}</div>
-                          <div className="text-sm text-gray-500">
-                            {m.cliente?.contacto}
-                          </div>
-                        </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex gap-1">
