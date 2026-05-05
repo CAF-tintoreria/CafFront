@@ -105,7 +105,7 @@ const schema = z.object({
   observaciones: z
     .string()
     .trim()
-    .max(200, "Máx 200 caracteres")
+    .max(500, "Máx 500 caracteres")
     .optional()
     .nullable(),
 });
